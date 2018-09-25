@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import java.util.*
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/users")
@@ -27,11 +28,19 @@ class UserController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@RequestBody user: User): ResponseEntity<User> {
+    fun create(@Valid @RequestBody user: User): ResponseEntity<User> {
         val createdUser = userService.create(user)
         val location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdUser.id).toUri()
 
         return ResponseEntity.created(location).build()
+    }
 
+    @DeleteMapping("/{id}")
+    fun deleteById(@PathVariable id: Int) {
+        try {
+            userService.deleteById(id)
+        } catch (ex: Exception) {
+            throw UserNotFoundException("User with id ${id} was not found")
+        }
     }
 }

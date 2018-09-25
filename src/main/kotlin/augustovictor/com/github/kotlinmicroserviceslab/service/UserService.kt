@@ -18,4 +18,8 @@ class UserService(
     fun findById(id: Int): Optional<User> {
         return userRepository.findById(id)
     }
+
+    fun deleteById(id: Int) {
+        userRepository.deleteById(id)
+    }
 }
