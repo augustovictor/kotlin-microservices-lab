@@ -15,7 +15,7 @@ import javax.validation.Valid
 class UserController(
         private val userService: UserService
 ) {
-    @GetMapping("/all")
+    @GetMapping("/all-users")
     fun findAll(): List<User> = userService.findAll()
 
     @GetMapping("/{id}")
