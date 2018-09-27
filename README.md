@@ -25,9 +25,11 @@ All messages should go within a file named as `messages.properties`, `messages_p
 
 ps: The client should specify in the header the attribute `Accept-Language` and a value. Eg.: pt, en.
 
+## HATEOAS (Hypermedia As The Engine Of Application State)
+Describes what can be done with resources;
+
 ## Api documentation
 
 Add two dependencies:
 - `springfox.swagger2` -> `http://localhost:9000/v2/api-docs`
 - `springfox.swagger-ui` -> `http://localhost:9000/swagger-ui.html`
-

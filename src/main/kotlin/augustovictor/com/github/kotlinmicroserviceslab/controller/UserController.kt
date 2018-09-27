@@ -3,6 +3,10 @@ package augustovictor.com.github.kotlinmicroserviceslab.controller
 import augustovictor.com.github.kotlinmicroserviceslab.exception.UserNotFoundException
 import augustovictor.com.github.kotlinmicroserviceslab.model.User
 import augustovictor.com.github.kotlinmicroserviceslab.service.UserService
+import org.springframework.hateoas.Resource
+import org.springframework.hateoas.mvc.ControllerLinkBuilder
+import org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo
+import org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -19,11 +23,14 @@ class UserController(
     fun findAll(): List<User> = userService.findAll()
 
     @GetMapping("/{id}")
-    fun findById(@PathVariable id: Int): Optional<User> {
+    fun findById(@PathVariable id: Int): Resource<User> {
         val user = userService.findById(id)
         if (!user.isPresent) throw UserNotFoundException("User with id ${id} was not found")
+        val resource = Resource<User>(user.get())
+        val linkTo = linkTo(methodOn(this::class.java).findAll())
+        resource.add(linkTo.withRel("all users"))
 
-        return user
+        return resource
     }
 
     @PostMapping
