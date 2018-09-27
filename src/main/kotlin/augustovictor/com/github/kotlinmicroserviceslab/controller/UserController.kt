@@ -4,14 +4,12 @@ import augustovictor.com.github.kotlinmicroserviceslab.exception.UserNotFoundExc
 import augustovictor.com.github.kotlinmicroserviceslab.model.User
 import augustovictor.com.github.kotlinmicroserviceslab.service.UserService
 import org.springframework.hateoas.Resource
-import org.springframework.hateoas.mvc.ControllerLinkBuilder
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
-import java.util.*
 import javax.validation.Valid
 
 @RestController
