@@ -3,7 +3,6 @@ package augustovictor.com.github.kotlinmicroserviceslab.controller
 import augustovictor.com.github.kotlinmicroserviceslab.exception.UserNotFoundException
 import augustovictor.com.github.kotlinmicroserviceslab.model.User
 import augustovictor.com.github.kotlinmicroserviceslab.service.UserService
-import io.swagger.annotations.ApiModel
 import org.springframework.hateoas.Resource
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn
