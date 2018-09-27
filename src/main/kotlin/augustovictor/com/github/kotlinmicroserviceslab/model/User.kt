@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
 @Entity
-class User(
+data class User(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Int = 0,
