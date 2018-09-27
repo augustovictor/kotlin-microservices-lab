@@ -20,7 +20,7 @@ class HelloController(
         return messageSource.getMessage("good.morning.message", null, locale)
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     fun sayHelloToName(@PathVariable name: String): String {
         return "Hello, ${name}"
     }
