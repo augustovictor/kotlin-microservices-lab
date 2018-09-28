@@ -2,7 +2,7 @@
 
 ## Annotations
 
-### Core Spring Framework anontations
+### Core Spring Framework annotations
 - `@Bean` - Works as a bean ID. It creates and returns the actual bean within `@Configuration` classes;
 - `@Configuration` - Used on classes that define `beans`. Its analog to XML config files; 
 - `@ComponentScan` -  Allow spring to know which packages to look for components;
@@ -33,3 +33,8 @@ Describes what can be done with resources;
 Add two dependencies:
 - `springfox.swagger2` -> `http://localhost:9000/v2/api-docs`
 - `springfox.swagger-ui` -> `http://localhost:9000/swagger-ui.html`
+
+## Monitoring
+- SpringBoot Actuator: Provides maintenance endpoints for checking application health;
+- SpringBoot Hal (Hypertext Application Language) Browser: Lets us see actuator in the browser;
+    - To open `hal browser` navigate to `http://localhost:9000/browser/index.html`

@@ -12,7 +12,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 @EnableSwagger2
 class SwaggerConfig {
 
-    private final val DEFAULT_CONTACT = Contact("", "", "")
     private final val DEFAULT_API_INFO = ApiInfo("My API!", "Customized Api description", "1.0", "http://terms-of-service-url.com", "Victor Augusto", "urn:tos", "http://license-url.com")
 
     private val DEFAULT_PRODUCES_AND_CONSUMES = hashSetOf<String>("application/json", "application/xml")
