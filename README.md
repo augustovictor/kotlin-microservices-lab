@@ -41,4 +41,4 @@ Add two dependencies:
     
 ## Properties filtering
 We can do this statically at the `Bean` level with the annotation `@JsonIgnore`;
-Or dinamically 
+Or dinamically with a `FilterProvider` and `MappingJacksonValue`
