@@ -38,3 +38,7 @@ Add two dependencies:
 - SpringBoot Actuator: Provides maintenance endpoints for checking application health;
 - SpringBoot Hal (Hypertext Application Language) Browser: Lets us see actuator in the browser;
     - To open `hal browser` navigate to `http://localhost:9000/browser/index.html`
+    
+## Properties filtering
+We can do this statically at the `Bean` level with the annotation `@JsonIgnore`;
+Or dinamically 

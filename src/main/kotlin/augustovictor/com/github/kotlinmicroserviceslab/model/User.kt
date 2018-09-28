@@ -1,5 +1,6 @@
 package augustovictor.com.github.kotlinmicroserviceslab.model
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 import javax.persistence.*
@@ -23,5 +24,12 @@ data class User(
         @NotNull
         @field:Size(min = 2, max = 10)
         @Column(name = "last_name")
-        val lastName: String = ""
+        val lastName: String = "",
+
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+        @ApiModelProperty(notes = "Should have at least 5 charactes")
+        @NotNull
+        @field:Size(min = 5, max = 30)
+        @Column(name = "password")
+        val password: String = ""
 )
