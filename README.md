@@ -42,3 +42,16 @@ Add two dependencies:
 ## Properties filtering
 We can do this statically at the `Bean` level with the annotation `@JsonIgnore`;
 Or dinamically with a `FilterProvider` and `MappingJacksonValue`
+
+## Resources versioning
+- URI: `@GetMapping("/v1/users")`. Client: `http://localhost:9000/v1/users`
+- Request Parameter versioning: `@GetMapping("/users", param = "version=1")`. Client: `http://localhost:9000/v1/users?version=1` 
+- Header: `@GetMapping("/users", headers="X-API-VERSION=1")`. Client Header: key(`X-API-VERSION`), value(`1`)
+- Produces (Accept Header Versioning/MimeType Versioning): `@GetMapping("/users", produces="application/vnd.company.app-v1+json")`. Client Header: key(`Accept`), value(`application/vnd.company.app-v1+json`)
+
+What to consider when choosing:
+- URI Polution;
+- Missuse of HTTP Headers;
+- Caching;
+- Can we execute the request from a browser?
+- How easy is it to generate docs?

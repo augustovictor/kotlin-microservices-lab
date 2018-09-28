@@ -13,7 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/users", produces = ["application/app-v1+json"])
 class UserController(
         private val userService: UserService
 ) {
