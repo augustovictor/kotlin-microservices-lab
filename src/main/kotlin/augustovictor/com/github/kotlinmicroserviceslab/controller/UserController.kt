@@ -3,6 +3,7 @@ package augustovictor.com.github.kotlinmicroserviceslab.controller
 import augustovictor.com.github.kotlinmicroserviceslab.exception.UserNotFoundException
 import augustovictor.com.github.kotlinmicroserviceslab.model.Post
 import augustovictor.com.github.kotlinmicroserviceslab.model.User
+import augustovictor.com.github.kotlinmicroserviceslab.repository.PostRepository
 import augustovictor.com.github.kotlinmicroserviceslab.service.UserService
 import org.springframework.hateoas.Resource
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo
@@ -16,7 +17,8 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("/users", produces = ["application/app-v1+json"])
 class UserController(
-        private val userService: UserService
+        private val userService: UserService,
+        private val postRepository: PostRepository
 ) {
     @GetMapping("/all-users")
     fun findAll(): List<User> = userService.findAll()
@@ -57,6 +59,19 @@ class UserController(
         if(!user.isPresent) throw UserNotFoundException("User with id $id not found!")
 
         return user.get().posts
+    }
 
+    @PostMapping("/{id}/posts")
+    fun createPost(@PathVariable id: Int, @RequestBody @Valid post: Post): Post {
+        val foundUser = userService.findById(id)
+        if(!foundUser.isPresent) throw UserNotFoundException("User with id $id not found!")
+
+        val user = foundUser.get()
+
+        post.user = user
+
+        postRepository.save(post)
+
+        return post
     }
 }

@@ -34,5 +34,5 @@ data class User(
         val password: String = ""
 ) {
         @OneToMany(mappedBy = "user")
-        val posts: List<Post> = listOf()
+        val posts: MutableList<Post> = mutableListOf()
 }
