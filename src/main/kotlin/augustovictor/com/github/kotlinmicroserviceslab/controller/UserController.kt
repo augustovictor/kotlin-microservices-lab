@@ -1,6 +1,7 @@
 package augustovictor.com.github.kotlinmicroserviceslab.controller
 
 import augustovictor.com.github.kotlinmicroserviceslab.exception.UserNotFoundException
+import augustovictor.com.github.kotlinmicroserviceslab.model.Post
 import augustovictor.com.github.kotlinmicroserviceslab.model.User
 import augustovictor.com.github.kotlinmicroserviceslab.service.UserService
 import org.springframework.hateoas.Resource
@@ -47,5 +48,15 @@ class UserController(
         } catch (ex: Exception) {
             throw UserNotFoundException("User with id ${id} was not found")
         }
+    }
+
+    @GetMapping("/{id}/posts")
+    fun allPosts(@PathVariable id: Int): List<Post> {
+        val user = userService.findById(id)
+
+        if(!user.isPresent) throw UserNotFoundException("User with id $id not found!")
+
+        return user.get().posts
+
     }
 }

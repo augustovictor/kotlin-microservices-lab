@@ -32,4 +32,7 @@ data class User(
         @field:Size(min = 5, max = 30)
         @Column(name = "password")
         val password: String = ""
-)
+) {
+        @OneToMany(mappedBy = "user")
+        val posts: List<Post> = listOf()
+}
