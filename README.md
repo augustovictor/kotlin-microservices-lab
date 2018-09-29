@@ -55,3 +55,25 @@ What to consider when choosing:
 - Caching;
 - Can we execute the request from a browser?
 - How easy is it to generate docs?
+
+## Security
+Just add to your main application the annotation `@EnableWebSecurity`.
+
+This will add the following properties:
+```
+security.basic.authorize-mode
+security.basic.enabled
+security.basic.path
+security.basic.realm
+security.enable-csrf
+security.headers.cache
+security.headers.content-security-policy
+security.headers.content-security-policy-mode
+security.headers.content-type
+security.headers.frame
+security.headers.hsts
+security.headers.xss
+security.ignored
+security.require-ssl
+security.sessions
+```
