@@ -77,3 +77,8 @@ security.ignored
 security.require-ssl
 security.sessions
 ```
+
+## Richardson Maturity Model
+- Level 1: Expose soap web services in a rest style: `http://server/getPosts` (Actions)
+- Level 2: Expose resources with proper URI: `http://server/posts` (Resorces)
+- Level 3: Implementation of `HATEOAS`. Data + next possible actions;
