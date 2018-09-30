@@ -4,6 +4,7 @@ import augustovictor.com.github.kotlinmicroserviceslab.exception.UserNotFoundExc
 import augustovictor.com.github.kotlinmicroserviceslab.model.Post
 import augustovictor.com.github.kotlinmicroserviceslab.model.User
 import augustovictor.com.github.kotlinmicroserviceslab.repository.PostRepository
+import augustovictor.com.github.kotlinmicroserviceslab.representer.UserDto
 import augustovictor.com.github.kotlinmicroserviceslab.service.UserService
 import org.springframework.hateoas.Resource
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo
@@ -20,6 +21,14 @@ class UserController(
         private val userService: UserService,
         private val postRepository: PostRepository
 ) {
+    @GetMapping("/specific")
+    fun getSpecific(): UserDto {
+        val user = userService.findAll().first()
+        val userDto = UserDto(user)
+        userDto
+        return userDto
+    }
+
     @GetMapping("/all-users")
     fun findAll(): List<User> = userService.findAll()
 

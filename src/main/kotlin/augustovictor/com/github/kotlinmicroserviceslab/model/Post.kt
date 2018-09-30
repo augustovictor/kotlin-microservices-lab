@@ -11,6 +11,6 @@ data class Post(
         val description: String = ""
 ) {
         @ManyToOne(fetch = FetchType.LAZY)
-        @JsonBackReference
+//        @JsonBackReference
         lateinit var user: User
 }

@@ -34,6 +34,6 @@ data class User(
         val password: String = ""
 ) {
         @OneToMany(mappedBy = "user")
-        @JsonManagedReference
+//        @JsonManagedReference
         val posts: MutableList<Post> = mutableListOf()
 }

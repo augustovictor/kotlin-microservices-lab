@@ -82,3 +82,14 @@ security.sessions
 - Level 1: Expose soap web services in a rest style: `http://server/getPosts` (Actions)
 - Level 2: Expose resources with proper URI: `http://server/posts` (Resorces)
 - Level 3: Implementation of `HATEOAS`. Data + next possible actions;
+
+## Microservices concerns
+- Bounded Contexts
+- Configuration management
+- Dynamic scale UP and scale DOWN
+    - Naming server (Eureka)
+    - Ribbon (Client side load balancer)
+    - Feign (Easier REST APIS)
+- Monitoring
+    - Zipkin Distributed Tracing
+    - Netflix Zuul API Gateway
