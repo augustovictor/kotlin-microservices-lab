@@ -1,5 +1,6 @@
 package augustovictor.com.github.kotlinmicroserviceslab.model
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import com.fasterxml.jackson.annotation.JsonProperty
 import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
@@ -10,8 +11,7 @@ import javax.validation.constraints.Size
 @ApiModel(description = "This user is a customer from the system.")
 @Entity
 data class User(
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Id @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Int = 0,
 
         @ApiModelProperty(notes = "Should have at least 2 characters")
@@ -34,5 +34,6 @@ data class User(
         val password: String = ""
 ) {
         @OneToMany(mappedBy = "user")
+        @JsonManagedReference
         val posts: MutableList<Post> = mutableListOf()
 }
